@@ -1,0 +1,2 @@
+F:/Ostad course/Ostad_assessment/crafty_bay/crafty_bay/android/app/.cxx/Debug/8465j5k2/armeabi-v7a/CMakeFiles/edit_cache.dir
+F:/Ostad course/Ostad_assessment/crafty_bay/crafty_bay/android/app/.cxx/Debug/8465j5k2/armeabi-v7a/CMakeFiles/rebuild_cache.dir
