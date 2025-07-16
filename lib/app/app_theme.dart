@@ -34,7 +34,14 @@ class AppTheme {
                       letterSpacing: 0.4
                     )
                 ),
-            ));
+            ),
+            appBarTheme: AppBarTheme(
+              titleTextStyle: TextStyle(
+          fontSize: 18,
+          color: Colors.black87
+        )
+            )
+            );
   }
   static OutlineInputBorder _getInputBorder(Color color){
     return OutlineInputBorder(
@@ -45,6 +52,11 @@ class AppTheme {
     return const TextTheme(
         titleLarge: TextStyle(
           fontSize: 28,
+          fontWeight: FontWeight.w600,
+          letterSpacing: .4,
+        ),
+        titleMedium: TextStyle(
+          fontSize: 22,
           fontWeight: FontWeight.w600,
           letterSpacing: .4,
         ),
