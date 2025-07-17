@@ -64,7 +64,10 @@ class _ProductCategoryScreenState extends State<ProductCategoryScreen> {
                           mainAxisSpacing: 8,
                           crossAxisSpacing: 2),
                       itemBuilder: (context, index) {
-                        return FittedBox(child: ProductCategoryItem());
+                        return FittedBox(
+                            child: ProductCategoryItem(
+                          categoryModel: controller.categoryModelList[index],
+                        ));
                       }),
                 ),
               ),

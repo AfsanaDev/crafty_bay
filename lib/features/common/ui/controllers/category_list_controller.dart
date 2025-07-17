@@ -25,6 +25,9 @@ class CategoryListController extends GetxController {
 
   List<CategoryModel> get categoryModelList => _categoryModelList;
 
+  int get homeCategoryItemListLength =>
+      _categoryModelList.length > 10 ? 10 : _categoryModelList.length;
+
   Future<void> getCategoryList() async {
     _currentPage++;
     if (_lastPage != null && _lastPage! < _currentPage) {
