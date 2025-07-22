@@ -23,7 +23,7 @@ class _ProductReviewScreenState extends State<ProductReviewScreen> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios),
             onPressed: () {
-              Navigator.pushNamed(context, ProductDetailsScreen.name);
+              Navigator.pop(context);
             },
           ),
         ),
