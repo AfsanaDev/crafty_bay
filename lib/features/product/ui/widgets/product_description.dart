@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 class ProductDescription extends StatelessWidget {
   const ProductDescription({
     super.key,
+    required this.description,
   });
+
+  final String description;
 
   @override
   Widget build(BuildContext context) {
-    return Text('''Nike shoes are generally made with a combination of materials, including leather, fabric, foam, and rubber. The specific materials can vary depending on the model.''',
-    style: TextStyle(
-     fontSize: 14,
-     fontWeight: FontWeight.w500,
-     color: Colors.black54
-    ),
+    return Text(
+      description,
+      style: TextStyle(
+          fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54),
     );
   }
 }

@@ -4,9 +4,12 @@ import 'package:crafty_bay/features/auth/ui/controller/main_bottom_nav_controlle
 import 'package:crafty_bay/features/auth/ui/controller/sign_up_controller.dart';
 import 'package:crafty_bay/features/auth/ui/controller/verify_otp_controller.dart';
 import 'package:crafty_bay/features/auth/ui/screens/login_screen.dart';
+import 'package:crafty_bay/features/cart/ui/controllers/cart_list_controller.dart';
 import 'package:crafty_bay/features/common/ui/controllers/auth_controller.dart';
 import 'package:crafty_bay/features/common/ui/controllers/category_list_controller.dart';
 import 'package:crafty_bay/features/home/ui/controllers/home_slider_controller.dart';
+import 'package:crafty_bay/features/home/ui/controllers/popular_product_list_controller.dart';
+import 'package:crafty_bay/features/product/controllers/add_to_cart_controller.dart';
 import 'package:get/get.dart';
 
 class ControllerBinder extends Bindings {
@@ -24,6 +27,9 @@ class ControllerBinder extends Bindings {
     Get.put(LoginController());
     Get.put(HomeSliderController());
     Get.put(CategoryListController());
+    Get.put(PopularProductController());
+    Get.put(AddToCartController());
+    Get.put(CartListController());
   }
 
   Future<void> _onUnAuthorize() async {

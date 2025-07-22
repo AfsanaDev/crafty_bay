@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class appBarIconButton extends StatelessWidget {
   const appBarIconButton({
-    super.key, required this.onTap, required this.iconData,
+    super.key,
+    required this.onTap,
+    required this.iconData,
   });
 
   final VoidCallback onTap;
@@ -15,9 +17,13 @@ class appBarIconButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4),
         child: CircleAvatar(
-          radius: 14,
+          radius: 16,
           backgroundColor: Colors.grey.shade200,
-          child: Icon(iconData, size: 18,color: Colors.grey,),
+          child: Icon(
+            iconData,
+            size: 18,
+            color: Colors.grey,
+          ),
         ),
       ),
     );

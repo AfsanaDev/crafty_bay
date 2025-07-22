@@ -1,9 +1,9 @@
 import 'package:crafty_bay/app/urls.dart';
 import 'package:crafty_bay/core/services/network/network_client.dart';
-import 'package:crafty_bay/features/home/data/models/slider_model.dart';
+import 'package:crafty_bay/features/common/models/product_model.dart';
 import 'package:get/get.dart';
 
-class HomeSliderController extends GetxController {
+class PopularProductController extends GetxController {
   bool _inProgress = false;
 
   String? _errorMessage;
@@ -12,28 +12,28 @@ class HomeSliderController extends GetxController {
 
   String? get errorMessage => _errorMessage;
 
-  List<SliderModel> _sliderModelList = [];
+  List<ProductModel> _productModelList = [];
 
-  List<SliderModel> get sliderModelList => _sliderModelList;
+  List<ProductModel> get productModelList => _productModelList;
 
-  Future<bool> getHomeSliders() async {
+  Future<bool> getPopularProducts() async {
     bool isSuccess = false;
     _inProgress = true;
     update();
     final NetworkResponse response = await Get.find<NetworkClient>().getRequest(
-      Urls.homeSliderUrl,
+      Urls.productsByTagUrl('Popular'),
     );
     if (response.isSuccess) {
-      List<SliderModel> list = [];
+      List<ProductModel> list = [];
       for (Map<String, dynamic> slider in response.responseData!['data']
           ['results']) {
-        list.add(SliderModel.fromJson(slider));
+        list.add(ProductModel.fromJson(slider));
       }
-      _sliderModelList = list;
+      _productModelList = list;
       isSuccess = true;
       _errorMessage = null;
     } else {
-      _errorMessage = response.errorMessage;
+      _errorMessage = response.errorMessage!;
     }
 
     _inProgress = false;

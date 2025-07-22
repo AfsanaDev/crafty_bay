@@ -20,7 +20,7 @@ dependencies:
   firebase_crashlytics: ^4.3.7
   flutter_svg: ^2.2.0
   email_validator: ^3.0.0
-  carousel_slider: ^5.1.1
+  carousel_slider: ^5.0.0
   get: ^4.7.2
   http: ^1.4.0
   logger: ^2.6.0

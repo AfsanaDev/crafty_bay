@@ -16,10 +16,11 @@ class _ProductCategoryScreenState extends State<ProductCategoryScreen> {
   final ScrollController _scrollController = ScrollController();
   final CategoryListController _categoryListController =
       Get.find<CategoryListController>();
+
   @override
   void initState() {
-    _scrollController.addListener(_loadMoreData);
     super.initState();
+    _scrollController.addListener(_loadMoreData);
   }
 
   void _loadMoreData() {
@@ -37,48 +38,128 @@ class _ProductCategoryScreenState extends State<ProductCategoryScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Categories',
-          ),
+          title: Text('Categories'),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
             onPressed: () {
               Get.find<MainBottomNavController>().backToHome();
             },
+            icon: Icon(Icons.arrow_back_ios),
           ),
         ),
-        body: GetBuilder<CategoryListController>(builder: (controller) {
-          if (controller.initialLoadingInProgress) {
-            const CenteredCircularProgressIndicator();
-          }
-          return Column(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: GridView.builder(
+        body: GetBuilder<CategoryListController>(
+          builder: (controller) {
+            if (controller.initialLoadingInProgress) {
+              return CenteredCircularProgressIndicator();
+            }
+
+            return Column(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: GridView.builder(
                       controller: _scrollController,
                       itemCount: controller.categoryModelList.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          mainAxisSpacing: 8,
-                          crossAxisSpacing: 2),
+                        crossAxisCount: 4,
+                        mainAxisSpacing: 8,
+                        crossAxisSpacing: 2,
+                      ),
                       itemBuilder: (context, index) {
                         return FittedBox(
-                            child: ProductCategoryItem(
-                          categoryModel: controller.categoryModelList[index],
-                        ));
-                      }),
+                          child: ProductCategoryItem(
+                            categoryModel: controller.categoryModelList[index],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ),
-              ),
-              Visibility(
-                visible: controller.inProgress,
-                child: const LinearProgressIndicator(),
-              )
-            ],
-          );
-        }),
+                Visibility(
+                  visible: controller.inProgress,
+                  child: LinearProgressIndicator(),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
+//   const ProductCategoryScreen({super.key});
+
+//   @override
+//   State<ProductCategoryScreen> createState() => _ProductCategoryScreenState();
+// }
+
+// class _ProductCategoryScreenState extends State<ProductCategoryScreen> {
+//   final ScrollController _scrollController = ScrollController();
+//   final CategoryListController _categoryListController =
+//       Get.find<CategoryListController>();
+//   @override
+//   void initState() {
+//     _scrollController.addListener(_loadMoreData);
+//     super.initState();
+//   }
+
+//   void _loadMoreData() {
+//     if (_scrollController.position.extentAfter < 300) {
+//       _categoryListController.getCategoryList();
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return PopScope(
+//       canPop: false,
+//       onPopInvokedWithResult: (_, __) {
+//         Get.find<MainBottomNavController>().backToHome();
+//       },
+//       child: Scaffold(
+//         appBar: AppBar(
+//           title: const Text(
+//             'Categories',
+//           ),
+//           leading: IconButton(
+//             icon: const Icon(Icons.arrow_back_ios),
+//             onPressed: () {
+//               Get.find<MainBottomNavController>().backToHome();
+//             },
+//           ),
+//         ),
+//         body: GetBuilder<CategoryListController>(builder: (controller) {
+//           if (controller.initialLoadingInProgress) {
+//             const CenteredCircularProgressIndicator();
+//           }
+//           return Column(
+//             children: [
+//               Expanded(
+//                 child: Padding(
+//                   padding: const EdgeInsets.symmetric(horizontal: 16),
+//                   child: GridView.builder(
+//                       controller: _scrollController,
+//                       itemCount: controller.categoryModelList.length,
+//                       gridDelegate:
+//                           const SliverGridDelegateWithFixedCrossAxisCount(
+//                               crossAxisCount: 4,
+//                               mainAxisSpacing: 8,
+//                               crossAxisSpacing: 2),
+//                       itemBuilder: (context, index) {
+//                         return FittedBox(
+//                             child: ProductCategoryItem(
+//                           categoryModel: controller.categoryModelList[index],
+//                         ));
+//                       }),
+//                 ),
+//               ),
+//               Visibility(
+//                 visible: controller.inProgress,
+//                 child: const LinearProgressIndicator(),
+//               )
+//             ],
+//           );
+//         }),
+//       ),
+//     );
+//   }
 }
