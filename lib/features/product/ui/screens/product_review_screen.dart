@@ -1,5 +1,5 @@
 import 'package:crafty_bay/app/app_colors.dart';
-import 'package:crafty_bay/features/product/ui/screens/product_details_screen.dart';
+import 'package:crafty_bay/features/product/ui/screens/create_product_review_screen.dart';
 import 'package:crafty_bay/features/product/ui/widgets/review_details.dart';
 import 'package:flutter/material.dart';
 
@@ -85,7 +85,9 @@ class _ProductReviewScreenState extends State<ProductReviewScreen> {
             width: 120,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(shape: CircleBorder()),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, CreateProductReviewScreen.name);
+              },
               child: Icon(Icons.add),
             ),
           ),
