@@ -31,34 +31,33 @@ class _ProductReviewScreenState extends State<ProductReviewScreen> {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ReviewDetailsWidget(),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        ReviewDetailsWidget(),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        ReviewDetailsWidget(),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        ReviewDetailsWidget(),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        ReviewDetailsWidget(),
-                        const SizedBox(
-                          height: 32,
-                        )
-                      ],
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ReviewDetailsWidget(),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      ReviewDetailsWidget(),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      ReviewDetailsWidget(),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      ReviewDetailsWidget(),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      ReviewDetailsWidget(),
+                      const SizedBox(
+                        height: 32,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -80,7 +79,7 @@ class _ProductReviewScreenState extends State<ProductReviewScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Price', style: Theme.of(context).textTheme.bodyLarge),
+          Text('Reviews(1000)', style: Theme.of(context).textTheme.bodyLarge),
           SizedBox(
             width: 120,
             child: ElevatedButton(
