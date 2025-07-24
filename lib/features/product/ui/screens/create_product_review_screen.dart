@@ -1,4 +1,5 @@
 import 'package:crafty_bay/core/ui/snack_bar_message.dart';
+import 'package:crafty_bay/core/ui/widgets/centered_circular_progress_indicator.dart';
 import 'package:crafty_bay/features/product/controllers/product_review_controller.dart';
 import 'package:crafty_bay/features/product/data/models/product_review_model.dart';
 import 'package:crafty_bay/features/product/ui/screens/product_details_screen.dart';
@@ -102,9 +103,19 @@ class _CreateProductReviewScreenState extends State<CreateProductReviewScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  ElevatedButton(
-                      onPressed: _onTapReviewSubmitButton,
-                      child: Text('Submit')),
+                  GetBuilder(
+                      init: _productReviewController,
+                      builder: (_) {
+                        return Visibility(
+                          visible: _productReviewController.inProgress == false,
+                          replacement: const Center(
+                            child: CenteredCircularProgressIndicator(),
+                          ),
+                          child: ElevatedButton(
+                              onPressed: _onTapReviewSubmitButton,
+                              child: Text('Submit')),
+                        );
+                      }),
                   const SizedBox(
                     height: 32,
                   ),
