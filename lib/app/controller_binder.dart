@@ -10,6 +10,7 @@ import 'package:crafty_bay/features/common/ui/controllers/category_list_controll
 import 'package:crafty_bay/features/home/ui/controllers/home_slider_controller.dart';
 import 'package:crafty_bay/features/home/ui/controllers/popular_product_list_controller.dart';
 import 'package:crafty_bay/features/product/controllers/add_to_cart_controller.dart';
+import 'package:crafty_bay/features/product/controllers/product_review_controller.dart';
 import 'package:crafty_bay/features/wishlist/ui/controllers/wish_list_controller.dart';
 import 'package:get/get.dart';
 
@@ -32,6 +33,7 @@ class ControllerBinder extends Bindings {
     Get.put(AddToCartController());
     Get.put(CartListController());
     Get.put(WishListController());
+    Get.put(ProductReviewController());
   }
 
   Future<void> _onUnAuthorize() async {

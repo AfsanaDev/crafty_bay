@@ -13,11 +13,11 @@ class ProductReviewController extends GetxController {
   String? get errorMessage => _errorMessage;
   String get message => _message;
 
-  Future<bool> signUp(ProductReviewModel model) async {
+  Future<bool> productReview(ProductReviewModel model) async {
     bool isSUccess = false;
     update();
     final NetworkResponse response = await Get.find<NetworkClient>()
-        .postRequest(Urls.signUpUrl, body: model.toJson());
+        .postRequest(Urls.getReviewListUrl, body: model.toJson());
 
     if (response.isSuccess) {
       _message = response.responseData!['msg'];

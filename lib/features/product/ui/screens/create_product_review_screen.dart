@@ -1,4 +1,9 @@
+import 'package:crafty_bay/core/ui/snack_bar_message.dart';
+import 'package:crafty_bay/features/product/controllers/product_review_controller.dart';
+import 'package:crafty_bay/features/product/data/models/product_review_model.dart';
+import 'package:crafty_bay/features/product/ui/screens/product_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CreateProductReviewScreen extends StatefulWidget {
   const CreateProductReviewScreen({super.key});
@@ -14,6 +19,9 @@ class _CreateProductReviewScreenState extends State<CreateProductReviewScreen> {
   final TextEditingController _writeReviewTEController =
       TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey();
+
+  final ProductReviewController _productReviewController =
+      Get.find<ProductReviewController>();
 
   //final SignUpController _signUpController = Get.find<SignUpController>();
 
@@ -95,7 +103,8 @@ class _CreateProductReviewScreenState extends State<CreateProductReviewScreen> {
                     height: 16,
                   ),
                   ElevatedButton(
-                      onPressed: _onTapSignUpButton, child: Text('Submit')),
+                      onPressed: _onTapReviewSubmitButton,
+                      child: Text('Submit')),
                   const SizedBox(
                     height: 32,
                   ),
@@ -108,12 +117,24 @@ class _CreateProductReviewScreenState extends State<CreateProductReviewScreen> {
     );
   }
 
-  void _onTapLoginButton() {
-    Navigator.pop(context);
-  }
-
-  Future<void> _onTapSignUpButton() async {
-    if (_formkey.currentState!.validate()) {}
+  Future<void> _onTapReviewSubmitButton() async {
+    if (_formkey.currentState!.validate()) {
+      final ProductReviewModel model = ProductReviewModel(
+        productName: _firstNameTEController.text.trim(),
+        comment: _lastNameTEController.text.trim(),
+        rating: _writeReviewTEController.text.trim(),
+      );
+      final bool isSuccess =
+          await _productReviewController.productReview(model);
+      if (isSuccess) {
+        //todo: app navigate to verify otp screen
+        showSnackBarMessage(context, _productReviewController.message);
+        Navigator.pushNamed(context, ProductDetailsScreen.name);
+      } else {
+        showSnackBarMessage(
+            context, _productReviewController.errorMessage ?? 'Error', true);
+      }
+    }
   }
 
   @override

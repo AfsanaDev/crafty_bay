@@ -8,7 +8,7 @@ class ProductReviewScreen extends StatefulWidget {
     super.key,
   });
 
-  static const String name = '/product_review_copy';
+  static const String name = '/product_review';
 
   @override
   State<ProductReviewScreen> createState() => _ProductReviewScreenState();
