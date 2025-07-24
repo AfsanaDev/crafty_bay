@@ -6,7 +6,7 @@ import 'package:crafty_bay/features/home/ui/controllers/popular_product_list_con
 import 'package:crafty_bay/features/home/ui/screens/home_screen.dart';
 import 'package:crafty_bay/features/product/ui/screens/product_category_screen.dart';
 import 'package:crafty_bay/features/product/ui/screens/product_review_screen.dart';
-import 'package:crafty_bay/features/product/wishlist/ui/screens/wish_list_screen.dart';
+import 'package:crafty_bay/features/wishlist/ui/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
